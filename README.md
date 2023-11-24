@@ -13,15 +13,15 @@ The Thin-Wall Scoliosis brace editor requires the following equipment/software f
 - 
 
 ## Getting Started 
-If you already have fdsafdsafdsafdsa
+If you already have the HoloLens application, porting guide can be found [here](https://developer-docs.magicleap.cloud/docs/guides/third-party/mrtk/hololens-porting/). 
 
-In order to use the application, the following steps must be taken: 
+In order to use the application from scratch, the following steps must be taken:
+Guide to setting up MagicLeap 2 application in Unity [here](https://ml1-developer.magicleap.com/en-us/learn/guides/1-1a-unity-setup-manual-steps). 
 
 1. Clone and open this repository in Unity
 2. Import Vuforia Engine
 3. Mixed Reality ToolKit using MixedRealityFeature.exe
-4. Configure MRTK for HoloLens2
-5. More later :)
+4. Configure MRTK for Magic Leap 2 - [Set up guide linked here](https://ml1-developer.magicleap.com/en-us/learn/guides/unity-mrtk-project-setup)
    
 ## Future Development
 

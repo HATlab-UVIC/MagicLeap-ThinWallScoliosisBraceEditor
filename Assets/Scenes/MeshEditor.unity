@@ -2290,7 +2290,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5b6d745c869823b45b8ab23c146a76de, type: 2}
+  - {fileID: 2100000, guid: 62555f608359e094eaafec49decd0a6e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6095,7 +6095,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5b6d745c869823b45b8ab23c146a76de, type: 2}
+  - {fileID: 2100000, guid: 62555f608359e094eaafec49decd0a6e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6888,8 +6888,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vertexMaterial: {fileID: 2100000, guid: 09c744fed833e494fa720702c88dfe72, type: 2}
-  translucentMaterial: {fileID: 2100000, guid: 71c1e1b4ae9b1584f9200612bac2849b, type: 2}
-  opaqueMaterial: {fileID: 2100000, guid: ad7678afa1b0a3242b330b67481eccf7, type: 2}
+  translucentMaterial: {fileID: 2100000, guid: cf6696fcf069c594eb20e29153365b21, type: 2}
+  opaqueMaterial: {fileID: 2100000, guid: 71c1e1b4ae9b1584f9200612bac2849b, type: 2}
 --- !u!114 &1782916499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7678,7 +7678,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1011244501761250, guid: 24158fb1437dc8e418d893939758764d, type: 3}
       propertyPath: m_Name
-      value: Main Camera (1)
+      value: Main Camera
       objectReference: {fileID: 0}
     - target: {fileID: 4214550324010282, guid: 24158fb1437dc8e418d893939758764d, type: 3}
       propertyPath: m_LocalPosition.x

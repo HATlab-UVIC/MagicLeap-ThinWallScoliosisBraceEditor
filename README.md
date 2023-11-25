@@ -10,7 +10,7 @@ The Thin-Wall Scoliosis brace editor requires the following equipment/software f
 - Vuforia Engine 10.18 - [Linked here](https://developer.vuforia.com/downloads/sdk)
 - Microsoft Mixed Reality ToolKit (MRKT) 2.8.3 and Open XR 1.9.0
 - Magic Leap Development tools: MagicLeap SDK, MagicLeap Setup Tool [Steps to do that here](https://developer-docs.magicleap.cloud/docs/guides/unity/getting-started/configure-unity-settings/)
-- 
+
 
 ## Getting Started 
 If you already have the HoloLens application, porting guide can be found [here](https://developer-docs.magicleap.cloud/docs/guides/third-party/mrtk/hololens-porting/). 
@@ -22,6 +22,8 @@ Guide to setting up MagicLeap 2 application in Unity [here](https://ml1-develope
 2. Import Vuforia Engine
 3. Mixed Reality ToolKit using MixedRealityFeature.exe
 4. Configure MRTK for Magic Leap 2 - [Set up guide linked here](https://ml1-developer.magicleap.com/en-us/learn/guides/unity-mrtk-project-setup)
+5. Switch to Android Build configuration
+6. Upload .apk file to Magic Leap Hub and enjoy your application
    
 ## Future Development
 

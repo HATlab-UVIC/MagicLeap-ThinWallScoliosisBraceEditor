@@ -2587,7 +2587,7 @@ MonoBehaviour:
   radiusSlider: {fileID: 1886592708}
   meshManipulator: {fileID: 1782916490}
   opaqueMaterial: {fileID: 2100000, guid: 33d89c6cb4ea7324ea3cac5886e8f669, type: 2}
-  transparentMaterial: {fileID: 2100000, guid: 5b6d745c869823b45b8ab23c146a76de, type: 2}
+  transparentMaterial: {fileID: 2100000, guid: 33d89c6cb4ea7324ea3cac5886e8f669, type: 2}
   manipulationTypeMenuHandler: {fileID: 873635201415072974}
   brushType: {fileID: 1708083238}
   sphere: {fileID: 576069928}
@@ -4769,7 +4769,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1240256156
 Transform:
   m_ObjectHideFlags: 0
@@ -4782,8 +4782,7 @@ Transform:
   m_LocalPosition: {x: -0.582, y: 0.25050002, z: 1.317881}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1655993108}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1240256157
@@ -6152,14 +6151,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1655993107}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.13000003, y: 0, z: -0.01600002}
+  m_LocalRotation: {x: -0.70710635, y: -0.0008023003, z: 0.0008023245, w: 0.70710635}
+  m_LocalPosition: {x: -0.452, y: 0.2345, z: 1.317881}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1737498293}
-  m_Father: {fileID: 1240256156}
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 90}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: -89.872, y: -90, z: 90}
 --- !u!114 &1655993110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6219,13 +6218,13 @@ MonoBehaviour:
   PreviewVisible: 1
   RuntimeOcclusion: 0
   RuntimeCollider: 0
-  mTrackableName: IMG_4613
+  mTrackableName: IMG_4558
   mInitializedInEditor: 1
-  mDataSetPath: Vuforia/ThinWallScoliosisBraceTargets.xml
-  mAspectRatio: 0.96581244
+  mDataSetPath: Vuforia/Targer.xml
+  mAspectRatio: 1.6222266
   mImageTargetType: 0
-  mWidth: 0.048
-  mHeight: 0.046359
+  mWidth: 0.075
+  mHeight: 0.121667
   mRuntimeTexture: {fileID: 0}
   mMotionHint: 1
   mTrackingOptimization: 0
@@ -6245,8 +6244,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObserverBehaviour: {fileID: 1655993111}
   mHiddenRoot: {fileID: 0}
-  mTargetName: IMG_4613
-  mDatasetName: Vuforia/ThinWallScoliosisBraceTargets.xml
+  mTargetName: IMG_4558
+  mDatasetName: Vuforia/Targer.xml
   mCastedBehaviour: {fileID: 1655993111}
   mMeshFilter: {fileID: 0}
   mMeshRenderer: {fileID: 0}
@@ -6617,8 +6616,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1737498292}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0.25000003}
+  m_LocalRotation: {x: -0, y: 0.001134641, z: -0.00000001711305, w: 0.99999934}
+  m_LocalPosition: {x: -0.24999939, y: 0, z: 0.00056729047}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6684,13 +6683,13 @@ MonoBehaviour:
   PreviewVisible: 1
   RuntimeOcclusion: 0
   RuntimeCollider: 0
-  mTrackableName: IMG_4614
+  mTrackableName: IMG_4557
   mInitializedInEditor: 1
-  mDataSetPath: Vuforia/ThinWallScoliosisBraceTargets.xml
-  mAspectRatio: 1.0128125
+  mDataSetPath: Vuforia/Targer.xml
+  mAspectRatio: 1.7341865
   mImageTargetType: 0
-  mWidth: 0.048
-  mHeight: 0.048615
+  mWidth: 0.075
+  mHeight: 0.130064
   mRuntimeTexture: {fileID: 0}
   mMotionHint: 1
   mTrackingOptimization: 0
@@ -6710,8 +6709,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObserverBehaviour: {fileID: 1737498295}
   mHiddenRoot: {fileID: 0}
-  mTargetName: IMG_4614
-  mDatasetName: Vuforia/ThinWallScoliosisBraceTargets.xml
+  mTargetName: IMG_4557
+  mDatasetName: Vuforia/Targer.xml
   mCastedBehaviour: {fileID: 1737498295}
   mMeshFilter: {fileID: 0}
   mMeshRenderer: {fileID: 0}
@@ -6796,7 +6795,7 @@ MonoBehaviour:
   manipulationTypeHandler: {fileID: 873635201415072974}
   brushType: {fileID: 1708083238}
   PlaneIndicator: {fileID: 1644713505}
-  Cube: {fileID: 0}
+  Cube: {fileID: 1644713505}
 --- !u!114 &1782916492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18541,3 +18540,4 @@ SceneRoots:
   - {fileID: 592085120}
   - {fileID: 1240256156}
   - {fileID: 1151388027801188910}
+  - {fileID: 1655993108}

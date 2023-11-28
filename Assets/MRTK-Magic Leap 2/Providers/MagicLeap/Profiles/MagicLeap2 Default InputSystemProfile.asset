@@ -29,12 +29,6 @@ MonoBehaviour:
     runtimePlatform: 7
     deviceManagerProfile: {fileID: 0}
   - componentType:
-      reference: Microsoft.MixedReality.Toolkit.Input.InputSimulationService, Microsoft.MixedReality.Toolkit.Services.InputSimulation
-    componentName: Input Simulation Service
-    priority: 0
-    runtimePlatform: 208
-    deviceManagerProfile: {fileID: 11400000, guid: 41478039094d47641bf4e09c20e61a5a, type: 2}
-  - componentType:
       reference: MagicLeap.MRTK.DeviceManagement.Input.MagicLeapDeviceManager, Assembly-CSharp
     componentName: Magic Leap Device Manager
     priority: 0
@@ -46,27 +40,6 @@ MonoBehaviour:
     priority: 0
     runtimePlatform: -1
     deviceManagerProfile: {fileID: 0}
-  - componentType:
-      reference: MagicLeap.MRTK.DeviceManagement.Input.MagicLeapEyeGazeDataProvider,
-        Assembly-CSharp
-    componentName: Magic Leap Eye Gaze Provider
-    priority: 0
-    runtimePlatform: 1056
-    deviceManagerProfile: {fileID: 11400000, guid: b5d0b28b94a73894f82c8171553fa2e3, type: 2}
-  - componentType:
-      reference: MagicLeap.MRTK.DeviceManagement.Input.MagicLeapSpeechInputProvider,
-        Assembly-CSharp
-    componentName: Magic Leap Speech Input
-    priority: 0
-    runtimePlatform: 1056
-    deviceManagerProfile: {fileID: 0}
-  - componentType:
-      reference: MagicLeap.MRTK.DeviceManagement.Input.MagicLeapHandTrackingInputProvider,
-        Assembly-CSharp
-    componentName: Magic Leap HandTracking Input
-    priority: 0
-    runtimePlatform: 32
-    deviceManagerProfile: {fileID: 11400000, guid: 9c427b3b629b5ec42b34851ae1dcdb0d, type: 2}
   focusProviderType:
     reference: Microsoft.MixedReality.Toolkit.Input.FocusProvider, Microsoft.MixedReality.Toolkit.Services.InputSystem
   raycastProviderType:

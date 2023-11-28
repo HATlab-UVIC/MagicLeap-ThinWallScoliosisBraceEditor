@@ -10,7 +10,7 @@ The Thin-Wall Scoliosis brace editor requires the following equipment/software f
 - Vuforia Engine 10.18 - [Linked here](https://developer.vuforia.com/downloads/sdk)
 - Microsoft Mixed Reality ToolKit (MRKT) 2.8.3 and Open XR 1.9.0
 - Magic Leap Development tools: MagicLeap SDK, MagicLeap Setup Tool [Steps to do that here](https://developer-docs.magicleap.cloud/docs/guides/unity/getting-started/configure-unity-settings/)
-- 
+
 
 ## Getting Started 
 If you already have the HoloLens application, porting guide can be found [here](https://developer-docs.magicleap.cloud/docs/guides/third-party/mrtk/hololens-porting/). 
@@ -22,6 +22,8 @@ Guide to setting up MagicLeap 2 application in Unity [here](https://ml1-develope
 2. Import Vuforia Engine
 3. Mixed Reality ToolKit using MixedRealityFeature.exe
 4. Configure MRTK for Magic Leap 2 - [Set up guide linked here](https://ml1-developer.magicleap.com/en-us/learn/guides/unity-mrtk-project-setup)
+5. Switch to Android Build configuration
+6. Upload .apk file to Magic Leap Hub and enjoy your application
    
 ## Future Development
 
@@ -30,3 +32,5 @@ The following features should be added/developed to better enhance the applicati
 - Shaders: Doing research into the best shaders to use on the brace to allow clinicians to see everything they need to and creating those shaders for the app
 - General stability: With the Vuforia, the app doesn't run as fast as it needs to for clinicians to be able to edit the brace, hopefully with more updates to the HoloLens, Vuforia and Unity the project can run better however finding ways to optimize these settings for the quickest runtime and best performance is necessary. Another image detection software or anchoring method could be researched as well, Vuforia is just very developer friendly and was the only one that worked for me while I tried a few. 
 - Accuracy and Usability: Finding ways to optimize the brushes and brush sizes to allow for the most accurate fitting and implementing those features
+- Fluidity between scenes: I think finding a way to go between object alignment and mesh editor might also be useful for clinicians to readjust settings as necessary
+- Patient customization: A UI that allows for clinicians to easily upload the XRay image and also edit the default brace to kind of fit the person to refine the brace editing process (maybe a measurement they put in that the UI puts in Unity)

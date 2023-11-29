@@ -17,8 +17,14 @@ public class LoadNewScene : MonoBehaviour {
 
 
     public void OnYesClicked () {
-        SaveObjectTransforms();
-        SceneManager.LoadScene( "MeshEditor" );  
+        if( SceneManager.GetSceneByName( "ObjectAlignment" ).isLoaded ) {
+            SaveObjectTransforms();
+            SceneManager.LoadScene( "MeshEditor" );
+        }
+        else {
+            SceneManager.LoadScene( "ObjectAlignment" );
+        }
+          
     }
 
     private void SaveObjectTransforms () {

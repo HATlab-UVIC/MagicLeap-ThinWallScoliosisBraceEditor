@@ -34,3 +34,4 @@ The following features should be added/developed to better enhance the applicati
 - Accuracy and Usability: Finding ways to optimize the brushes and brush sizes to allow for the most accurate fitting and implementing those features
 - Fluidity between scenes: I think finding a way to go between object alignment and mesh editor might also be useful for clinicians to readjust settings as necessary
 - Patient customization: A UI that allows for clinicians to easily upload the XRay image and also edit the default brace to kind of fit the person to refine the brace editing process (maybe a measurement they put in that the UI puts in Unity)
+- Smoothing Brush: Adding a brush that smoothes the harsh edges sometimes on the brace (maybe this would be in export?)

@@ -17,6 +17,7 @@ public class ImageHandler : MonoBehaviour {
         imageBounds = GetComponent<BoundsControl>();
         imageBoxCollider = GetComponent<BoxCollider>();
 
+
         imageManipulator.enabled = false;
         imageBounds.enabled = false;
         imageBoxCollider.enabled = false;

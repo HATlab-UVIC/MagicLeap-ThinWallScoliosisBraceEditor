@@ -33,15 +33,13 @@ MonoBehaviour:
     componentName: Magic Leap Device Manager
     priority: 0
     runtimePlatform: 1056
-    deviceManagerProfile: {fileID: 11400000, guid: aeb2e143bf7e5a74db51e2cef3fb4f99,
-      type: 2}
+    deviceManagerProfile: {fileID: 11400000, guid: b175ae879a33b9b4485b0db30ebf2202, type: 2}
   - componentType:
       reference: Microsoft.MixedReality.Toolkit.Input.InputSimulationService, Microsoft.MixedReality.Toolkit.Services.InputSimulation
     componentName: Input Simulation Service
     priority: 0
     runtimePlatform: 208
-    deviceManagerProfile: {fileID: 11400000, guid: 41478039094d47641bf4e09c20e61a5a,
-      type: 2}
+    deviceManagerProfile: {fileID: 11400000, guid: 41478039094d47641bf4e09c20e61a5a, type: 2}
   focusProviderType:
     reference: Microsoft.MixedReality.Toolkit.Input.FocusProvider, Microsoft.MixedReality.Toolkit.Services.InputSystem
   raycastProviderType:
@@ -49,16 +47,12 @@ MonoBehaviour:
   focusQueryBufferSize: 128
   shouldUseGraphicsRaycast: 1
   focusIndividualCompoundCollider: 0
-  inputActionsProfile: {fileID: 11400000, guid: e64aa98ebca1cc04cbe5767148af0784,
-    type: 2}
-  inputActionRulesProfile: {fileID: 11400000, guid: 03945385d89102f41855bc8f5116b199,
-    type: 2}
+  inputActionsProfile: {fileID: 11400000, guid: e64aa98ebca1cc04cbe5767148af0784, type: 2}
+  inputActionRulesProfile: {fileID: 11400000, guid: 03945385d89102f41855bc8f5116b199, type: 2}
   pointerProfile: {fileID: 11400000, guid: a838815189e3fbc468ef748c93a73bb1, type: 2}
   gesturesProfile: {fileID: 11400000, guid: bd7829a9b29409045a745b5a18299291, type: 2}
   speechCommandsProfile: {fileID: 0}
   enableControllerMapping: 1
-  controllerMappingProfile: {fileID: 11400000, guid: ab4a904258033be4aa3b630fd4419248,
-    type: 2}
-  controllerVisualizationProfile: {fileID: 11400000, guid: 798be83587c3acf4491af4dd1757622d,
-    type: 2}
+  controllerMappingProfile: {fileID: 11400000, guid: ab4a904258033be4aa3b630fd4419248, type: 2}
+  controllerVisualizationProfile: {fileID: 11400000, guid: 798be83587c3acf4491af4dd1757622d, type: 2}
   handTrackingProfile: {fileID: 0}

@@ -12,6 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MeshEditor.unity
     guid: f9d7eee598f9169499eafe2369f12f00
   m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: b298dfbbd490d8841812be7a977f068a, type: 2}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: f749c74210e01cb4881c5ee7a0e1c5d8, type: 2}
     com.unity.xr.magicleap.magic_leap_settings: {fileID: 11400000, guid: 5ed9ff5f29e911a4bb3a56b0b0a5dfea, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 389a55194b718c442be0d7336613e8d4, type: 2}

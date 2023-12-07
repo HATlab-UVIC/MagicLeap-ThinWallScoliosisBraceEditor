@@ -10,6 +10,7 @@ using System.Diagnostics;
 using UnityEngine.SocialPlatforms.Impl;
 using System.Collections.Generic;
 using System.Linq;
+using Fusion;
 //using UnityEditor.ShaderKeywordFilter;
 
 public class MeshManipulator : MonoBehaviour, IMixedRealityPointerHandler {
@@ -19,8 +20,6 @@ public class MeshManipulator : MonoBehaviour, IMixedRealityPointerHandler {
 
     [SerializeField]
     private ManipulationTypeMenuHandler manipulationTypeHandler;
-    
-
 
     [SerializeField]
     private ToggleBrushTypeMenus brushType;
@@ -31,10 +30,15 @@ public class MeshManipulator : MonoBehaviour, IMixedRealityPointerHandler {
     [SerializeField]
     private GameObject Cube;
 
+    //[Networked]
     public Mesh DeformedMesh { get; set; }
-    public bool MoveAndRotateActivated { get; set; } = false;
-    public bool DeformerActivated { get; set; } = true;
 
+  
+    public bool MoveAndRotateActivated { get; set; } = false;
+
+
+    public bool DeformerActivated { get; set; } = true;
+   
     private class VertexData {
         public Vector3 Position { get; set; }
         public int Index { get; set; }

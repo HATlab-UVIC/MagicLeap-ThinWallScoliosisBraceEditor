@@ -27,12 +27,16 @@ namespace MagicLeap.Networking
 		private SharedReferencePoint _referencePoint;
 		private Interpolator<Vector3> _positionInterpolator;
 		private Interpolator<Quaternion> _rotationInterpolator;
+
 		[Networked]
 		public Vector3 Position { get; set; }
+
 		[Networked]
 		public Quaternion Rotation { get; set; }
-		//StateAuthority means we can control the object.
-		public virtual bool HasControl => Object.HasStateAuthority;
+
+
+        //StateAuthority means we can control the object.
+        public virtual bool HasControl => Object.HasStateAuthority;
 
 		private void Start()
 		{
@@ -47,9 +51,8 @@ namespace MagicLeap.Networking
 
 			_positionInterpolator = GetInterpolator<Vector3>(nameof(Position));
 			_rotationInterpolator = GetInterpolator<Quaternion>(nameof(Rotation));
-			Position = _referencePoint.transform.InverseTransformPoint(transform.position);
+            Position = _referencePoint.transform.InverseTransformPoint(transform.position);
 			Rotation = Quaternion.Inverse(_referencePoint.transform.rotation) * transform.rotation;
-		
 		}
 		
 		public override void FixedUpdateNetwork()
@@ -69,6 +72,7 @@ namespace MagicLeap.Networking
 			transform.position = _referencePoint.transform.TransformPoint(position);
 			transform.rotation = _referencePoint.transform.rotation * rotation;
 
+
 		}
 
 
@@ -78,7 +82,8 @@ namespace MagicLeap.Networking
 			if (!HasControl)
 			{
 				ApplyRelativeWorldPosition(_positionInterpolator.Value, _rotationInterpolator.Value);
-			}
+
+            }
 
 		
 		}

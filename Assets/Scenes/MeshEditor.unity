@@ -1841,9 +1841,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4505189981193056502, guid: d82e2f09994ad2f4fb43359bfb977f64, type: 3}
       insertIndex: -1
       addedObject: {fileID: 873635201415072974}
-    - targetCorrespondingSourceObject: {fileID: 4505189981193056502, guid: d82e2f09994ad2f4fb43359bfb977f64, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 873635201415072979}
     - targetCorrespondingSourceObject: {fileID: 6678109773920222932, guid: d82e2f09994ad2f4fb43359bfb977f64, type: 3}
       insertIndex: -1
       addedObject: {fileID: 523920909}
@@ -3489,26 +3486,6 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
---- !u!114 &736740848
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 736740826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a21b486d0bb44444b1418aaa38b44de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
 --- !u!1 &766454685
 GameObject:
   m_ObjectHideFlags: 0
@@ -3705,7 +3682,7 @@ PrefabInstance:
     - target: {fileID: 2439048520122749811, guid: 4b7b31e30b61762449b60c46c68c18cc, type: 3}
       propertyPath: SharedReferencePoint
       value: 
-      objectReference: {fileID: 1961902491}
+      objectReference: {fileID: 0}
     - target: {fileID: 3722599077435132664, guid: 4b7b31e30b61762449b60c46c68c18cc, type: 3}
       propertyPath: far clip plane
       value: 1000
@@ -3729,7 +3706,7 @@ PrefabInstance:
     - target: {fileID: 8802625747512217832, guid: 4b7b31e30b61762449b60c46c68c18cc, type: 3}
       propertyPath: SharedReferencePoint
       value: 
-      objectReference: {fileID: 1961902491}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -3746,9 +3723,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3738790492190037452, guid: 4b7b31e30b61762449b60c46c68c18cc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 736740836}
-    - targetCorrespondingSourceObject: {fileID: 3738790492190037452, guid: 4b7b31e30b61762449b60c46c68c18cc, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 736740848}
   m_SourcePrefab: {fileID: 100100000, guid: 4b7b31e30b61762449b60c46c68c18cc, type: 3}
 --- !u!114 &794942383 stripped
 MonoBehaviour:
@@ -7893,7 +7867,6 @@ MonoBehaviour:
   NetworkedBehaviours:
   - {fileID: 1758192427}
   - {fileID: 1758192426}
-  - {fileID: 873635201415072979}
   SimulationBehaviours: []
 --- !u!114 &1782916484
 MonoBehaviour:
@@ -8636,73 +8609,6 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 2625155450607193954, guid: d82e2f09994ad2f4fb43359bfb977f64, type: 3}
   m_PrefabInstance: {fileID: 418414498}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1961902489
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1961902492}
-  - component: {fileID: 1961902491}
-  - component: {fileID: 1961902490}
-  m_Layer: 0
-  m_Name: Shared Reference Point
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1961902490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1961902489}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f448d59dc5ca63e44b0e0bd645f46f2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ID: 0
-  _averagingSize: 1
-  _positionLowPass: 0.005
-  _rotationLowPass: 2
-  _optionalGraphic: {fileID: 3707904422628401152, guid: d353b2eea004c8a449ded089c3e5425e, type: 3}
-  _rotationOffset: {x: 0, y: 180, z: 0}
-  _keepVisualOn: 0
-  _debugDraw: 0
-  _debugWireCubeSize: 0.05
-  _tagMaterial: {fileID: 0}
---- !u!114 &1961902491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1961902489}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7d79bbb28544b2cb682df58b438d803, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1961902492
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1961902489}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.6756562, y: 0.0010727104, z: 0.45974013}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1973385945
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8807,7 +8713,7 @@ PrefabInstance:
     - target: {fileID: 4816855827439795022, guid: 210b8fff96206734eb2b9702b322dace, type: 3}
       propertyPath: SharedReferencePoint
       value: 
-      objectReference: {fileID: 1961902491}
+      objectReference: {fileID: 0}
     - target: {fileID: 5812037487450497733, guid: 210b8fff96206734eb2b9702b322dace, type: 3}
       propertyPath: far clip plane
       value: 1000
@@ -11835,21 +11741,6 @@ MonoBehaviour:
   eraseButtonRenderer: {fileID: 1856784627}
   defaultMaterial: {fileID: 2100000, guid: f91208b33ca355c4688dacd53d08a13e, type: 2}
   toggledMaterial: {fileID: 2100000, guid: 75c4f686712d8154e98e54b835587b1d, type: 2}
---- !u!114 &873635201415072979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 399590944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3973705480c4972b26f44a1f8e66709, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interpolationDataSource: 0
-  _Position: {x: 0, y: 0, z: 0}
-  _Rotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!33 &905485258540262745
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -20136,7 +20027,6 @@ SceneRoots:
   - {fileID: 1655993108}
   - {fileID: 794942382}
   - {fileID: 1103090439}
-  - {fileID: 1961902492}
   - {fileID: 1973385945}
   - {fileID: 70197807}
   - {fileID: 818057526}

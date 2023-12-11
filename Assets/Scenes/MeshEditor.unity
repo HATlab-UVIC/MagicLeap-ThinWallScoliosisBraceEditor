@@ -3682,7 +3682,7 @@ PrefabInstance:
     - target: {fileID: 2439048520122749811, guid: 4b7b31e30b61762449b60c46c68c18cc, type: 3}
       propertyPath: SharedReferencePoint
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 818057525}
     - target: {fileID: 3722599077435132664, guid: 4b7b31e30b61762449b60c46c68c18cc, type: 3}
       propertyPath: far clip plane
       value: 1000
@@ -3706,7 +3706,7 @@ PrefabInstance:
     - target: {fileID: 8802625747512217832, guid: 4b7b31e30b61762449b60c46c68c18cc, type: 3}
       propertyPath: SharedReferencePoint
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 818057525}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -4319,7 +4319,7 @@ MonoBehaviour:
   _keepVisualOn: 0
   _debugDraw: 0
   _debugWireCubeSize: 0.05
-  _tagMaterial: {fileID: 0}
+  _tagMaterial: {fileID: 2100000, guid: 5828f113fb726f64eab08340333edd86, type: 2}
 --- !u!114 &818057525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8713,7 +8713,7 @@ PrefabInstance:
     - target: {fileID: 4816855827439795022, guid: 210b8fff96206734eb2b9702b322dace, type: 3}
       propertyPath: SharedReferencePoint
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 818057525}
     - target: {fileID: 5812037487450497733, guid: 210b8fff96206734eb2b9702b322dace, type: 3}
       propertyPath: far clip plane
       value: 1000
@@ -17445,7 +17445,6 @@ GameObject:
   - component: {fileID: 8164078558445744453}
   - component: {fileID: 8164078558445744455}
   - component: {fileID: 8164078558445744454}
-  - component: {fileID: 8164078558445744456}
   m_Layer: 0
   m_Name: ScoliosisBrace
   m_TagString: Untagged
@@ -17548,7 +17547,6 @@ MonoBehaviour:
   NetworkedBehaviours:
   - {fileID: 8164078558445744455}
   - {fileID: 8164078558445744454}
-  - {fileID: 8164078558445744456}
   SimulationBehaviours: []
 --- !u!114 &8164078558445744454
 MonoBehaviour:
@@ -17587,34 +17585,6 @@ MonoBehaviour:
   onDidGrab:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &8164078558445744456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8164078558445744446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interpolationDataSource: 0
-  InterpolationSpace: 0
-  InterpolationTarget: {fileID: 0}
-  InterpolateErrorCorrection: 1
-  InterpolatedErrorCorrectionSettings:
-    MinRate: 3.3
-    MaxRate: 10
-    PosBlendStart: 0.25
-    PosBlendEnd: 1
-    PosMinCorrection: 0.025
-    PosTeleportDistance: 2
-    RotBlendStart: 0.1
-    RotBlendEnd: 0.5
-    RotTeleportRadians: 1.5
-  UseLegacySharedModeInterpolation: 0
-  TargetInterpolationDelay: 0.03
 --- !u!1 &8164078560120940821
 GameObject:
   m_ObjectHideFlags: 0

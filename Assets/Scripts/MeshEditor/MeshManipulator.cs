@@ -11,6 +11,8 @@ using UnityEngine.SocialPlatforms.Impl;
 using System.Collections.Generic;
 using System.Linq;
 using Fusion;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 //using UnityEditor.ShaderKeywordFilter;
 
 public class MeshManipulator : MonoBehaviour, IMixedRealityPointerHandler {
@@ -30,7 +32,7 @@ public class MeshManipulator : MonoBehaviour, IMixedRealityPointerHandler {
     [SerializeField]
     private GameObject Cube;
 
-    //[Networked]
+    [Networked]
     public Mesh DeformedMesh { get; set; }
 
   
@@ -38,8 +40,15 @@ public class MeshManipulator : MonoBehaviour, IMixedRealityPointerHandler {
 
 
     public bool DeformerActivated { get; set; } = true;
-   
-    private class VertexData {
+
+    [Serializable] 
+    public class SerializedMeshData 
+    {
+        public Vector3[] vertices;
+    }
+
+  
+    public class VertexData {
         public Vector3 Position { get; set; }
         public int Index { get; set; }
          
@@ -82,6 +91,7 @@ public class MeshManipulator : MonoBehaviour, IMixedRealityPointerHandler {
             reversedTriangles[ i + 2 ] = triangles[ i + 1 ];
         }
 
+        
         DeformedMesh = new() {
             vertices = vertices,
             normals = reversedNormals,
@@ -272,9 +282,18 @@ public class MeshManipulator : MonoBehaviour, IMixedRealityPointerHandler {
             transformedVertices[ index ] = newPositions[ i ];
             displacedVertices[ index ] = transform.InverseTransformPoint( transformedVertices[ index ] );
         }
+            // Serialize the mesh data
+        
+
         DeformedMesh.vertices = displacedVertices;
         DeformedMesh.RecalculateNormals();
         DeformedMesh.RecalculateBounds();
+
+        SerializedMeshData meshData = new SerializedMeshData {
+            vertices = DeformedMesh.vertices
+        };
+        byte[] serializedData = SerializeMeshData( meshData );
+
     }
 
     private void EraseVertices ( VertexData[] erasedVertices ) {
@@ -327,6 +346,43 @@ public class MeshManipulator : MonoBehaviour, IMixedRealityPointerHandler {
         DeformedMesh.RecalculateNormals();
         DeformedMesh.RecalculateBounds();
         RefreshOctree();
+    }
+
+
+    // Detect changes in the mesh
+
+
+    
+    void UpdateMesh ( byte[] serializedData ) {
+        // Deserialize the data
+        SerializedMeshData meshData = DeserializeMeshData( serializedData );
+
+        // Apply the vertices to the mesh
+        DeformedMesh.vertices = meshData.vertices;
+        DeformedMesh.RecalculateNormals();
+        DeformedMesh.RecalculateBounds();
+        RefreshOctree();
+    }
+
+    
+    static byte[] SerializeMeshData ( SerializedMeshData meshData ) {
+        // Serialize mesh data to byte array (example: using BinaryFormatter)
+        // Make sure to adapt this based on your specific serialization logic
+        BinaryFormatter bf = new BinaryFormatter();
+        using ( MemoryStream ms = new MemoryStream() ) {
+            bf.Serialize( ms, meshData );
+            return ms.ToArray();
+        }
+    }
+
+   
+    static SerializedMeshData DeserializeMeshData ( byte[] serializedData ) {
+        // Deserialize mesh data from byte array (example: using BinaryFormatter)
+        // Make sure to adapt this based on your specific deserialization logic
+        BinaryFormatter bf = new BinaryFormatter();
+        using ( MemoryStream ms = new MemoryStream( serializedData ) ) {
+            return (SerializedMeshData)bf.Deserialize( ms );
+        }
     }
 
 }

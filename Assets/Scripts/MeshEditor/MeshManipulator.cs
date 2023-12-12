@@ -32,26 +32,32 @@ public class MeshManipulator : MonoBehaviour, IMixedRealityPointerHandler {
     [SerializeField]
     private GameObject Cube;
 
-    [Networked]
+    MeshSerializer serializer = new MeshSerializer();
+
+    [Serializable]
+    public class SerializedMeshData {
+        public Vector3[] vertices;
+
+    }
+
+
     public Mesh DeformedMesh { get; set; }
 
-  
+
     public bool MoveAndRotateActivated { get; set; } = false;
+
+    //public static bool MeshManipulated { get; set; } = false;
 
 
     public bool DeformerActivated { get; set; } = true;
 
-    [Serializable] 
-    public class SerializedMeshData 
-    {
-        public Vector3[] vertices;
-    }
 
-  
+
+
     public class VertexData {
         public Vector3 Position { get; set; }
         public int Index { get; set; }
-         
+
         public VertexData ( Vector3 position, int index ) {
             Position = position;
             Index = index;
@@ -62,7 +68,7 @@ public class MeshManipulator : MonoBehaviour, IMixedRealityPointerHandler {
     private Vector3 selectedVertex, previousHandPosition;
     private int[] nearbyIndices;
     private Vector3[] originalVertices, transformedVertices, nearbyVertices, displacedVertices;
-    private List<Vector3[]> storedVerticesList; 
+    private List<Vector3[]> storedVerticesList;
     private VertexData[] nearbyVertexData, vertexDataRange;
     private PointOctree<VertexData> octree;
     private List<VertexData> nearbyVertexDataList = new List<VertexData>();
@@ -91,7 +97,7 @@ public class MeshManipulator : MonoBehaviour, IMixedRealityPointerHandler {
             reversedTriangles[ i + 2 ] = triangles[ i + 1 ];
         }
 
-        
+
         DeformedMesh = new() {
             vertices = vertices,
             normals = reversedNormals,
@@ -133,7 +139,7 @@ public class MeshManipulator : MonoBehaviour, IMixedRealityPointerHandler {
         if ( !MoveAndRotateActivated ) {
             if ( DeformerActivated ) {
                 var pointerResult = eventData.Pointer.Result;
-                
+
                 if ( pointerResult.CurrentPointerTarget == gameObject ) {
                     previousHandPosition = pointerResult.StartPoint;
                     Vector3 currentPositionOnSphere = pointerResult.Details.Point;
@@ -141,7 +147,7 @@ public class MeshManipulator : MonoBehaviour, IMixedRealityPointerHandler {
                         selectedVertex = GetSelectedSphereVertices( currentPositionOnSphere, selectionRadius );
                     else if ( brushType.PlaneButtonToggled )
                         selectedVertex = GetSelectedPlaneVertices( currentPositionOnSphere, selectionRadius );
-                    
+
                     if ( float.IsPositiveInfinity( selectedVertex.x ) && float.IsPositiveInfinity( selectedVertex.y ) && float.IsPositiveInfinity( selectedVertex.z ) ) {
                         vertexSelected = false;
                     } else {
@@ -156,9 +162,9 @@ public class MeshManipulator : MonoBehaviour, IMixedRealityPointerHandler {
     //This occurs when the user's index finger and thumb are touching and they are moving their hand
     public void OnPointerDragged ( MixedRealityPointerEventData eventData ) {
         if ( vertexSelected && manipulationTypeHandler.DeformMenuActivated ) {
-            DeformMesh(eventData);
-        } else if (vertexSelected && manipulationTypeHandler.EraseMenuActivated) {
-            EraseVertices(nearbyVertexData);
+            DeformMesh( eventData );
+        } else if ( vertexSelected && manipulationTypeHandler.EraseMenuActivated ) {
+            EraseVertices( nearbyVertexData );
         }
     }
 
@@ -173,7 +179,7 @@ public class MeshManipulator : MonoBehaviour, IMixedRealityPointerHandler {
 
     //This function finds the vertex closest to the hitPoint (where the cursor intersects with the brace) and fills an array with all the
     //vertices that are within a certain radius of the closest vertex. The vertices within the array are called the selected vertices.
-    public Vector3 GetSelectedSphereVertices (Vector3 hitPoint, float radius) {
+    public Vector3 GetSelectedSphereVertices ( Vector3 hitPoint, float radius ) {
         nearbyVertexData = octree.GetNearby( hitPoint, radius );
         nearbyVertices = new Vector3[ nearbyVertexData.Length ];
         nearbyIndices = new int[ nearbyVertexData.Length ];
@@ -200,14 +206,14 @@ public class MeshManipulator : MonoBehaviour, IMixedRealityPointerHandler {
         return closestVertex;
     }
 
-    public Vector3 GetSelectedPlaneVertices (Vector3 hitPoint, float planeLength) {
+    public Vector3 GetSelectedPlaneVertices ( Vector3 hitPoint, float planeLength ) {
 
         //This function will find the vertices inside a sqaure cube with length set by the user
 
         //vertexDataRange will retrieve a large circle of data around the hit point (more than necessary)
-        vertexDataRange = octree.GetNearby( hitPoint, planeLength*2 );
+        vertexDataRange = octree.GetNearby( hitPoint, planeLength * 2 );
         nearbyVertexDataList.Clear();
-        
+
         float halfSideLength = planeLength / 2;
 
         int j = 0;
@@ -217,22 +223,22 @@ public class MeshManipulator : MonoBehaviour, IMixedRealityPointerHandler {
 
         //this will sort throught vertexDataRange to find the points in that array that are inside the cube shape and add them to the nearbyVertexDataList
         for ( int i = 0; i < vertexDataRange.Length; i++ ) {
-            Vector3 worldVertex = vertexDataRange[ i ].Position  ;
+            Vector3 worldVertex = vertexDataRange[ i ].Position;
             if ( worldVertex.x >= minPoint.x && worldVertex.x <= maxPoint.x ) {
                 if ( worldVertex.y >= minPoint.y && worldVertex.y <= maxPoint.y ) {
                     if ( worldVertex.z >= minPoint.z && worldVertex.z <= maxPoint.z ) {
-                        nearbyVertexDataList.Add( vertexDataRange[ i ]);
+                        nearbyVertexDataList.Add( vertexDataRange[ i ] );
                         j++;
                     }
-                }    
-            } 
+                }
+            }
         }
         nearbyVertices = new Vector3[ nearbyVertexDataList.Count ];
         nearbyIndices = new int[ nearbyVertexDataList.Count ];
         nearbyVertexData = new VertexData[ nearbyVertexDataList.Count ];
 
         for ( int i = 0; i < nearbyVertexDataList.Count; i++ ) {
-            nearbyVertexData[ i ]= nearbyVertexDataList[ i ];
+            nearbyVertexData[ i ] = nearbyVertexDataList[ i ];
             nearbyVertices[ i ] = nearbyVertexDataList[ i ].Position;
             nearbyIndices[ i ] = nearbyVertexDataList[ i ].Index;
         }
@@ -249,7 +255,7 @@ public class MeshManipulator : MonoBehaviour, IMixedRealityPointerHandler {
             }
         }
 
-        return closestVertex; 
+        return closestVertex;
     }
 
     //This functions is responsible for finding the new position of the pulled vertices based on the user's hand position and assigning a weight
@@ -267,23 +273,24 @@ public class MeshManipulator : MonoBehaviour, IMixedRealityPointerHandler {
             }
         } else if ( brushType.PlaneButtonToggled ) {
             for ( int i = 0; i < nearbyVertices.Length; i++ ) {
-                float weight = Mathf.SmoothStep( 0f, 1f, 1f - Vector3.Distance( selectedVertex, nearbyVertices[ i ] ) / (selectionRadius*2) );
+                float weight = Mathf.SmoothStep( 0f, 1f, 1f - Vector3.Distance( selectedVertex, nearbyVertices[ i ] ) / ( selectionRadius * 2 ) );
                 Vector3 weightedMovementVector = movementVector * weight;
                 movedVertexPositions[ i ] = nearbyVertices[ i ] + weightedMovementVector;
             }
-        }    
+        }
+        //MeshManipulated = true;
         MoveVertices( movedVertexPositions );
     }
 
-    //This function actually moves the vertices
+    //This function actually moves the vertice
     public void MoveVertices ( Vector3[] newPositions ) {
         for ( int i = 0; i < newPositions.Length; i++ ) {
             int index = nearbyIndices[ i ];
             transformedVertices[ index ] = newPositions[ i ];
             displacedVertices[ index ] = transform.InverseTransformPoint( transformedVertices[ index ] );
         }
-            // Serialize the mesh data
-        
+        // Serialize the mesh data
+
 
         DeformedMesh.vertices = displacedVertices;
         DeformedMesh.RecalculateNormals();
@@ -293,15 +300,26 @@ public class MeshManipulator : MonoBehaviour, IMixedRealityPointerHandler {
             vertices = DeformedMesh.vertices
         };
         byte[] serializedData = SerializeMeshData( meshData );
-
+        serializer.SerializedMeshManipulated( serializedData );
     }
+    /*
+    public void UpdateMesh ( byte[] serializedData ) {
+        // Deserialize the data
+        SerializedMeshData meshData = DeserializeMeshData( serializedData );
+
+        // Apply the vertices to the mesh
+        DeformedMesh.vertices = meshData.vertices;
+        DeformedMesh.RecalculateNormals();
+        DeformedMesh.RecalculateBounds();
+        RefreshOctree();
+    }*/
 
     private void EraseVertices ( VertexData[] erasedVertices ) {
         //the erase function will reset the points in the sphere/plane back to their original position 
 
         for ( int i = 0; i < erasedVertices.Length; i++ ) {
-            int index = erasedVertices[i].Index;
-            displacedVertices[ index ] = originalVertices [index];
+            int index = erasedVertices[ i ].Index;
+            displacedVertices[ index ] = originalVertices[ index ];
         }
         DeformedMesh.vertices = displacedVertices;
         DeformedMesh.RecalculateNormals();
@@ -311,7 +329,7 @@ public class MeshManipulator : MonoBehaviour, IMixedRealityPointerHandler {
     }
 
     //This function refreshes the data structure when vertices are moved.
-    private void RefreshOctree () {
+    public void RefreshOctree () {
         octree = new PointOctree<VertexData>( 100f, transform.position, 0.5f );
 
         for ( int i = 0; i < displacedVertices.Length; i++ ) {
@@ -329,7 +347,7 @@ public class MeshManipulator : MonoBehaviour, IMixedRealityPointerHandler {
     //This function will undo the last manipulation to the mesh.
     public void UndoChange () {
 
-        displacedVertices = storedVerticesList [storedVerticesList.Count -2];
+        displacedVertices = storedVerticesList[ storedVerticesList.Count - 2 ];
         storedVerticesList.RemoveAt( storedVerticesList.Count - 1 );
         DeformedMesh.vertices = displacedVertices;
         DeformedMesh.RecalculateNormals();
@@ -352,20 +370,9 @@ public class MeshManipulator : MonoBehaviour, IMixedRealityPointerHandler {
     // Detect changes in the mesh
 
 
-    
-    void UpdateMesh ( byte[] serializedData ) {
-        // Deserialize the data
-        SerializedMeshData meshData = DeserializeMeshData( serializedData );
 
-        // Apply the vertices to the mesh
-        DeformedMesh.vertices = meshData.vertices;
-        DeformedMesh.RecalculateNormals();
-        DeformedMesh.RecalculateBounds();
-        RefreshOctree();
-    }
 
-    
-    static byte[] SerializeMeshData ( SerializedMeshData meshData ) {
+    public byte[] SerializeMeshData ( SerializedMeshData meshData ) {
         // Serialize mesh data to byte array (example: using BinaryFormatter)
         // Make sure to adapt this based on your specific serialization logic
         BinaryFormatter bf = new BinaryFormatter();
@@ -374,16 +381,10 @@ public class MeshManipulator : MonoBehaviour, IMixedRealityPointerHandler {
             return ms.ToArray();
         }
     }
-
-   
-    static SerializedMeshData DeserializeMeshData ( byte[] serializedData ) {
-        // Deserialize mesh data from byte array (example: using BinaryFormatter)
-        // Make sure to adapt this based on your specific deserialization logic
-        BinaryFormatter bf = new BinaryFormatter();
-        using ( MemoryStream ms = new MemoryStream( serializedData ) ) {
-            return (SerializedMeshData)bf.Deserialize( ms );
-        }
-    }
-
 }
+
+
+
+
+
 

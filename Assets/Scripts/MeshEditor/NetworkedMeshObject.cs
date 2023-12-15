@@ -2,8 +2,6 @@ using ExitGames.Client.Photon.StructWrapping;
 using Fusion;
 using UnityEngine;
 
-
-//[Networked]
 public class NetworkedMeshObject : NetworkBehaviour {
 
     private MeshManipulator meshManipulator;
@@ -12,9 +10,7 @@ public class NetworkedMeshObject : NetworkBehaviour {
 
     private Vector3[] movedVertices;
 
-    // Add other networked properties as needed
 
-    // StateAuthority means we can control the mesh modifications.
     public virtual bool HasControl => Object.HasStateAuthority;
 
     private void Start () {
@@ -27,21 +23,11 @@ public class NetworkedMeshObject : NetworkBehaviour {
         base.Spawned();
 
         meshManipulator = GetComponent<MeshManipulator>();
-
-        // Initialize other variables as needed
-
-        // Initialize the networked vertices based on the initial mesh
-
-            
-
-        //*/
-
     }
 
     public override void FixedUpdateNetwork () {
-        // If we can control the mesh modifications
         if ( HasControl ) {
-            // Update the networked vertices based on mesh modifications           
+     
                 for ( int i = 0; i < meshManipulator.networkedmovedvertices.Length; i++ ) {
                     NetworkedVertices.Set( i, meshManipulator.networkedmovedvertices[i]);
                 }

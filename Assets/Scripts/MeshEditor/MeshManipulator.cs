@@ -5,14 +5,9 @@ using Microsoft.MixedReality.Toolkit.Input;
 using Microsoft.MixedReality.Toolkit;
 using System;
 using UnityEngine;
-using UnityEngine.UIElements;
-using System.Diagnostics;
-using UnityEngine.SocialPlatforms.Impl;
 using System.Collections.Generic;
-using System.Linq;
 using Fusion;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
+
 //using UnityEditor.ShaderKeywordFilter;
 
 public class MeshManipulator : MonoBehaviour, IMixedRealityPointerHandler {
@@ -31,14 +26,6 @@ public class MeshManipulator : MonoBehaviour, IMixedRealityPointerHandler {
 
     [SerializeField]
     private GameObject Cube;
-
-    //MeshSerializer serializer = new MeshSerializer();
-
-    [Serializable]
-    public class SerializedMeshData {
-        public Vector3[] vertices;
-
-    }
 
 
     public Mesh DeformedMesh { get; set; }
@@ -67,11 +54,9 @@ public class MeshManipulator : MonoBehaviour, IMixedRealityPointerHandler {
     private bool vertexSelected = false;
     private Vector3 selectedVertex, previousHandPosition;
     private int[] nearbyIndices;
-
-    [Networked]
-    public Vector3[] movedVertexPositions { get; set; } 
-
-    private Vector3[] originalVertices, transformedVertices, displacedVertices, nearbyVertices;
+    
+    public Vector3[] nearbyVertices,networkedmovedvertices;
+    private Vector3[] originalVertices, transformedVertices, displacedVertices;
     private List<Vector3[]> storedVerticesList;
     private VertexData[] nearbyVertexData, vertexDataRange;
     private PointOctree<VertexData> octree;
@@ -267,7 +252,7 @@ public class MeshManipulator : MonoBehaviour, IMixedRealityPointerHandler {
     public void DeformMesh ( MixedRealityPointerEventData eventData ) {
         Vector3 newHandPosition = eventData.Pointer.Position;
         Vector3 movementVector = newHandPosition - previousHandPosition;
-       // Vector3[] movedVertexPositions = new Vector3[ nearbyVertices.Length ];
+        Vector3[] movedVertexPositions = new Vector3[ nearbyVertices.Length ];
 
         if ( brushType.SphereButtonToggled ) {
             for ( int i = 0; i < nearbyVertices.Length; i++ ) {
@@ -282,6 +267,7 @@ public class MeshManipulator : MonoBehaviour, IMixedRealityPointerHandler {
                 movedVertexPositions[ i ] = nearbyVertices[ i ] + weightedMovementVector;
             }
         }
+        networkedmovedvertices = movedVertexPositions;
         //MeshManipulated = true;
         MoveVertices( movedVertexPositions );
     }
@@ -293,7 +279,6 @@ public class MeshManipulator : MonoBehaviour, IMixedRealityPointerHandler {
             transformedVertices[ index ] = newPositions[ i ];
             displacedVertices[ index ] = transform.InverseTransformPoint( transformedVertices[ index ] );
         }
-
 
         DeformedMesh.vertices = displacedVertices;
         DeformedMesh.RecalculateNormals();
@@ -354,18 +339,6 @@ public class MeshManipulator : MonoBehaviour, IMixedRealityPointerHandler {
         RefreshOctree();
     }
 
-
-    // Detect changes in the mesh
-
-    public byte[] SerializeMeshData ( SerializedMeshData meshData ) {
-        // Serialize mesh data to byte array (example: using BinaryFormatter)
-        // Make sure to adapt this based on your specific serialization logic
-        BinaryFormatter bf = new BinaryFormatter();
-        using ( MemoryStream ms = new MemoryStream() ) {
-            bf.Serialize( ms, meshData );
-            return ms.ToArray();
-        }
-    }
 }
 
 

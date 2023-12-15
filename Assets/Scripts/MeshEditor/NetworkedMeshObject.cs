@@ -5,11 +5,12 @@ using UnityEngine;
 
 //[Networked]
 public class NetworkedMeshObject : NetworkBehaviour {
-    //private MeshFilter meshFilter;
-    private MeshManipulator meshDeformer;
 
-    [Networked, Capacity( 500 )]
-    NetworkArray<Vector3> NetworkedVertices { get; }
+    private MeshManipulator meshManipulator;
+
+    [Networked, Capacity( 100 )] NetworkArray<Vector3> NetworkedVertices { get; }
+
+    private Vector3[] movedVertices;
 
     // Add other networked properties as needed
 
@@ -17,46 +18,45 @@ public class NetworkedMeshObject : NetworkBehaviour {
     public virtual bool HasControl => Object.HasStateAuthority;
 
     private void Start () {
-        //meshFilter = GetComponent<MeshFilter>();
-        meshDeformer = GetComponent<MeshManipulator>();
 
-        // Initialize other variables as needed
+        meshManipulator = GetComponent<MeshManipulator>();
+
     }
 
     public override void Spawned () {
         base.Spawned();
 
-        //meshFilter = GetComponent<MeshFilter>();
-        meshDeformer = GetComponent<MeshManipulator>();
+        meshManipulator = GetComponent<MeshManipulator>();
 
         // Initialize other variables as needed
 
         // Initialize the networked vertices based on the initial mesh
-        for ( int i = 0; i < meshDeformer.movedVertexPositions.Length; i++ ) {
-            NetworkedVertices.Set( i, meshDeformer.movedVertexPositions[ i ] );
-        }
 
+            
+
+        //*/
 
     }
 
     public override void FixedUpdateNetwork () {
         // If we can control the mesh modifications
         if ( HasControl ) {
-            // Update the networked vertices based on mesh modifications
-            for ( int i = 0; i < meshDeformer.movedVertexPositions.Length; i++ ) {
-                NetworkedVertices.Set( i, meshDeformer.movedVertexPositions[ i ] );
-            }
+            // Update the networked vertices based on mesh modifications           
+                for ( int i = 0; i < meshManipulator.networkedmovedvertices.Length; i++ ) {
+                    NetworkedVertices.Set( i, meshManipulator.networkedmovedvertices[i]);
+                }
         }
+        
     }
 
     public override void Render () {
-        if ( !HasControl ) {
             // Apply mesh modifications received from the network
-            for ( int i = 0; i < meshDeformer.movedVertexPositions.Length; i++ ) {
-                NetworkedVertices.Set( i, meshDeformer.movedVertexPositions[ i ] );
+            for ( int i = 0; i < NetworkedVertices.Length; i++ ) {
+                movedVertices[i] = NetworkedVertices.Get(i);
             }
-            meshDeformer.MoveVertices( meshDeformer.movedVertexPositions );
-        }
+
+            meshManipulator.MoveVertices( movedVertices );
+
     }
 }
 

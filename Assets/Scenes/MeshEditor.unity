@@ -7923,6 +7923,7 @@ MonoBehaviour:
   brushType: {fileID: 1708083238}
   PlaneIndicator: {fileID: 1644713505}
   Cube: {fileID: 1644713505}
+  nearbyVertices: []
 --- !u!114 &1782916492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17449,7 +17450,6 @@ GameObject:
   - component: {fileID: 8164078558445744453}
   - component: {fileID: 8164078558445744455}
   - component: {fileID: 8164078558445744454}
-  - component: {fileID: 8164078558445744456}
   m_Layer: 0
   m_Name: ScoliosisBrace
   m_TagString: Untagged
@@ -17552,7 +17552,6 @@ MonoBehaviour:
   NetworkedBehaviours:
   - {fileID: 8164078558445744455}
   - {fileID: 8164078558445744454}
-  - {fileID: 8164078558445744456}
   SimulationBehaviours: []
 --- !u!114 &8164078558445744454
 MonoBehaviour:
@@ -17591,19 +17590,6 @@ MonoBehaviour:
   onDidGrab:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &8164078558445744456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8164078558445744446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89923406bdfa9dd4086ef5764f1ea8f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interpolationDataSource: 0
 --- !u!1 &8164078560120940821
 GameObject:
   m_ObjectHideFlags: 0
